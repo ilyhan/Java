@@ -1,8 +1,18 @@
 package com.university;
 
 import java.util.Scanner;
-
+/**
+ * Главная функция
+ * Обеспечивает взаимодействие пользователя с контейнером
+ */
 public class Main {
+
+    /**
+     * Точка входа в программу
+     * Предоставляет пользователю меню для взаимодействия с контейнером
+     *
+     * @param args аргументы командной строки (не используются)
+     */
     public static void main(String[] args) {
         Container container = new Container();
         Scanner in = new Scanner(System.in);

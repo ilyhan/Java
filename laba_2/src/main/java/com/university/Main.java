@@ -4,7 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * Главный класс программы, который запрашивает у пользователя математическое выражение,
+ * обрабатывает и запрашивает  переменные и выводит результат вычисления
+ */
 public class Main {
+    /**
+     * Вход в программу
+     * Запрашивает у пользователя выражение, обрабатывает и запрашивает переменные и вычисляет результат
+     * @param args Аргументы командной строки
+     */
     public static void main(String[] args) {
         System.out.println("Введите выражение для рассчета");
         Scanner in = new Scanner(System.in);

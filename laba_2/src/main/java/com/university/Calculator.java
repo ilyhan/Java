@@ -2,9 +2,18 @@ package com.university;
 
 import java.util.Map;
 import java.util.Stack;
-
+/**
+ * Класс Calculator реализует методы для вычисления математических выражений,
+ * содержащих числа, переменные, операторы и функции
+ */
 public class Calculator {
 
+    /**
+     * Проверяет, существует ли функция с указанным именем
+     *
+     * @param input название функции
+     * @return true, если функция существует, false не существует
+     */
     public static boolean containsFunction(String input) {
         try {
             EFunction.fromName(input);
@@ -14,10 +23,22 @@ public class Calculator {
         }
     }
 
+    /**
+     * Проверяет, является ли символ оператором (+, -, *, /)
+     *
+     * @param c Символ для проверки
+     * @return true, если символ является оператором, false не являептся
+     */
     private static boolean isOperator(char c) {
         return c == '+' || c == '-' || c == '*' || c == '/';
     }
 
+    /**
+     * Проверяет валидность выражения
+     *
+     * @param tokens Выражение в виде набора символов 
+     * @return true, если выражение корректно, false не корректно
+     */
     private static boolean isValid(char[] tokens) {
         Stack<Character> stack = new Stack<>();
 
@@ -38,6 +59,14 @@ public class Calculator {
         return stack.isEmpty();
     }
 
+    /**
+     * Вычисляет значение математического выражения
+     *
+     * @param expression Математическое выражение в виде строки
+     * @param variables  Объект с переменными, где ключ - имя переменной, значение - её числовое значение
+     * @return Результат вычисления выражения
+     * @throws IllegalArgumentException Если выражение некорректно или содержит неизвестные переменные
+     */
     public static double calculate(String expression, Map<String, Double> variables) {
         char[] tokens = expression.toCharArray();
 
@@ -132,6 +161,13 @@ public class Calculator {
         return values.pop();
     }
 
+
+    /**
+     * Возвращает приоритет оператора
+     *
+     * @param operator Оператор (+, -, *, /)
+     * @return Приоритет оператора (1 для + и -, 2 для * и /)
+     */
     private static int getPrecedence(char operator) {
         switch (operator) {
             case '+':
@@ -145,6 +181,15 @@ public class Calculator {
         }
     }
 
+    /**
+     * Применяет оператор к двум значениям
+     *
+     * @param operator Оператор (+, -, *, /)
+     * @param a Первый операнд
+     * @param b Второй операнд
+     * @return Результат применения оператора
+     * @throws ArithmeticException Деление на ноль
+     */
     private static double applyOperator(char operator, double b, double a) {
         switch (operator) {
             case '+':

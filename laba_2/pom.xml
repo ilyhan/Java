@@ -18,33 +18,33 @@
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
 
-  <dependencies>
+<dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.9.3</version>
+        <scope>test</scope>
     </dependency>
-  </dependencies>
+</dependencies>
 
-    <build>
+  <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.5.0</version> 
+        <version>3.5.0</version>
         <executions>
           <execution>
             <goals>
-              <goal>javadoc</goal> 
+              <goal>javadoc</goal>
             </goals>
           </execution>
         </executions>
         <configuration>
-          <show>public</show> 
-          <encoding>UTF-8</encoding> 
-          <docencoding>UTF-8</docencoding> 
-          <charset>UTF-8</charset> 
+          <show>public</show>
+          <encoding>UTF-8</encoding>
+          <docencoding>UTF-8</docencoding>
+          <charset>UTF-8</charset>
           <windowtitle>Container API</windowtitle>
           <doctitle>Container API Documentation</doctitle>
         </configuration>

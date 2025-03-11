@@ -1,5 +1,6 @@
 package com.university.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.university.enums.*;
@@ -23,13 +24,17 @@ public class Person {
 
     @Override
     public String toString() {
+        String formattedDate = birthDate != null
+                ? new SimpleDateFormat("dd.MM.yyyy").format(birthDate)
+                : "Не указана";
+
         return "Person{" +
                 "id = " + id +
                 ", name = '" + name + '\'' +
                 ", gender = " + gender +
                 ", department = " + department.toString() +
                 ", salary = " + salary +
-                ", birthDate = " + birthDate +
+                ", birthDate = " + formattedDate +
                 '}';
     }
 }

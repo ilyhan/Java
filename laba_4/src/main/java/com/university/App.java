@@ -18,18 +18,33 @@ import com.opencsv.CSVReaderBuilder;
 import com.university.models.Department;
 import com.university.models.Person;
 
+/**
+ * Главный класс для чтения данных о людях из CSV-файла
+ */
 public class App {
+    /**
+     * Точка входа в приложение
+     *
+     * @param args аргументы командной строки
+     */
     public static void main(String[] args) {
         String filePath = "foreign_names.csv";
         char separator = ';';
 
         List<Person> persons = readFromFile(filePath, separator);
-        
+
         for (int i = 0; i < persons.size(); i++) {
             System.out.println(persons.get(i));
         }
     }
 
+    /**
+     * Читает данные о людях из CSV-файла и возвращает список объектов Person
+     *
+     * @param filePath  путь к CSV-файлу
+     * @param separator разделитель, используемый для парсинга CSV-файла
+     * @return список объектов Person
+     */
     private static List<Person> readFromFile(String filePath, char separator) {
         List<Person> persons = new ArrayList<>();
         Map<String, Department> departmentMap = new HashMap<>();

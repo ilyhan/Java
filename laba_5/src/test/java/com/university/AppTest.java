@@ -1,20 +1,47 @@
 package com.university;
 
-// import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
-// import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
- * Unit test for simple App.
+ * Unit тесты
  */
-public class AppTest 
-{
-    /**
-     * Rigorous Test :-)
-     */
-    // @Test
-    // public void shouldAnswerWithTrue()
-    // {
-    //     assertTrue( true );
-    // }
+public class AppTest {
+    @Test
+    public void testNullParamConstructor() {
+        assertThrows(Exception.class, () -> {
+            new Injector(null);
+        });
+    }
+
+    @Test
+    public void testNullObject() {
+        Injector injector = new Injector("config.properties");
+
+        assertThrows(Exception.class, () -> {
+            injector.inject(null);
+        });
+    }
+
+    @Test
+    public void testFirstFileProperties() {
+        Injector injector = new Injector("config.properties");
+        injector.inject(new SomeBean()).foo();
+
+        assertDoesNotThrow(() -> {
+            App.main(new String[] {});
+        });
+    }
+
+    @Test
+    public void testSecondFileProperties() {
+        Injector injector = new Injector("otherConfig.properties");
+        injector.inject(new SomeBean()).foo();
+
+        assertDoesNotThrow(() -> {
+            App.main(new String[] {});
+        });
+    }
 }

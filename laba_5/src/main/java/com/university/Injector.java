@@ -6,9 +6,18 @@ import java.util.Properties;
 
 import com.university.annotations.AutoInjectable;
 
+/**
+ * Класс для внедрения зависимостей в объекты на основе аннотации AutoInjectable
+ */
 public class Injector {
     private Properties properties;
 
+    /**
+     * Конструктор, загружающий настройки из файла properties
+     *
+     * @param propertiesPath путь к файлу конфигурации
+     * @throws RuntimeException если файл не найден или произошла ошибка при загрузке 
+     */
     public Injector(String propertiesPath) {
         properties = new Properties();
         try (InputStream input = Injector.class.getClassLoader().getResourceAsStream(propertiesPath)) {
@@ -18,6 +27,14 @@ public class Injector {
         }
     }
 
+    /**
+     * Внедряет зависимости в переданный объект
+     *
+     * @param object объект, в который нужно внедрить зависимости
+     * @param <T> тип объекта
+     * @return объект с внедренными зависимостями
+     * @throws RuntimeException если произошла ошибка при внедрении зависимостей
+     */
     public <T> T inject(T object) {
         for (Field field : object.getClass().getDeclaredFields()) {
             if (field.isAnnotationPresent(AutoInjectable.class)) {
